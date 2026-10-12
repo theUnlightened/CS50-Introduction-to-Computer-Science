@@ -6,7 +6,6 @@ def sentence(tx):
     for loct in range(LENGTH-1):
         if tx[loct] == '!' or tx[loct] == '?' or tx[loct] == '.':
             sen+=1
-        loct+=1
     return sen
 
 def letter(tx):
@@ -17,11 +16,10 @@ def letter(tx):
             let+=1
         elif tx[loct] >= 'a' and tx[loct] <= 'z':
             let+=1
-        loct+=1
     return let
 
 def word(tx):
-    wd = 1
+    wd = 0
     LENGTH = len(tx)
     for i in range(LENGTH -1):
         if tx[i] == ' ' :
