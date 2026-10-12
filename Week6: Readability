@@ -3,7 +3,7 @@ from cs50 import get_string
 def sentence(tx):
     sen = 0
     LENGTH = len(tx)
-    for loct in range(LENGTH-1):
+    for loct in range(LENGTH):
         if tx[loct] == '!' or tx[loct] == '?' or tx[loct] == '.':
             sen+=1
     return sen
@@ -11,7 +11,7 @@ def sentence(tx):
 def letter(tx):
     let = 0
     LENGTH = len(tx)
-    for loct in range(LENGTH-1):
+    for loct in range(LENGTH):
         if tx[loct] <= 'Z' and tx[loct] >= 'A':
             let+=1
         elif tx[loct] >= 'a' and tx[loct] <= 'z':
@@ -19,12 +19,7 @@ def letter(tx):
     return let
 
 def word(tx):
-    wd = 0
-    LENGTH = len(tx)
-    for i in range(LENGTH -1):
-        if tx[i] == ' ' :
-            wd+=1
-    return wd
+    return len(tx.split())
 
 def L(tx):
     k = (float(letter(tx) / word(tx))) * 100
