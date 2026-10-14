@@ -1,1 +1,67 @@
+def luhn(card):
+    total = 0
+    position = 0
 
+    while card > 0:
+        digit = card % 10
+        card = card // 10
+
+        if position % 2 == 1:
+            digit = digit * 2
+
+            if digit >= 10:
+                digit = digit - 9
+
+        total += digit
+        position += 1
+
+    return total
+
+
+def length(card):
+    count = 0
+
+    while card >= 1:
+        card = card // 10
+        count += 1
+
+    return count
+
+
+def first_two_digits(card):
+    while card >= 100:
+        card = card // 10
+
+    return card
+
+
+def first_digit(card):
+    while card >= 10:
+        card = card // 10
+
+    return card
+
+
+card = int(input("Number: "))
+checksum = luhn(card)
+
+
+if checksum % 10 != 0:
+    print("INVALID")
+
+else:
+    digits = length(card)
+    first_two = first_two_digits(card)
+    first_one = first_digit(card)
+
+    if digits == 15 and (first_two == 34 or first_two == 37):
+        print("AMEX")
+
+    elif digits == 16 and 51 <= first_two <= 55:
+        print("MASTERCARD")
+
+    elif (digits == 13 or digits == 16) and first_one == 4:
+        print("VISA")
+
+    else:
+        print("INVALID")
