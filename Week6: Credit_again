@@ -4,64 +4,61 @@ def luhn(card):
 
     while card > 0:
         digit = card % 10
-        card = card // 10
+        card //= 10
 
         if position % 2 == 1:
-            digit = digit * 2
+            digit *= 2
 
             if digit >= 10:
-                digit = digit - 9
+                digit -= 9
 
         total += digit
         position += 1
 
-    return total
+    return total % 10 == 0
 
 
 def length(card):
     count = 0
 
-    while card >= 1:
-        card = card // 10
+    while card > 0:
+        card //= 10
         count += 1
 
     return count
 
 
-def first_two_digits(card):
+def first_two(card):
     while card >= 100:
-        card = card // 10
+        card //= 10
 
     return card
 
 
-def first_digit(card):
-    while card >= 10:
-        card = card // 10
+def main():
+    card = int(input("Number: "))
 
-    return card
-
-
-card = int(input("Number: "))
-checksum = luhn(card)
-
-
-if checksum % 10 != 0:
-    print("INVALID")
-
-else:
     digits = length(card)
-    first_two = first_two_digits(card)
-    first_one = first_digit(card)
+    first = first_two(card)
 
-    if digits == 15 and (first_two == 34 or first_two == 37):
+    if not luhn(card):
+        print("INVALID")
+        return
+
+    # AMEX: 15 digits, starts with 34 or 37
+    if digits == 15 and (first == 34 or first == 37):
         print("AMEX")
 
-    elif digits == 16 and 51 <= first_two <= 55:
+    # Mastercard: 16 digits, starts 51-55
+    elif digits == 16 and 51 <= first <= 55:
         print("MASTERCARD")
 
-    elif (digits == 13 or digits == 16) and first_one == 4:
+    # VISA: 13 or 16 digits, starts 4
+    elif (digits == 13 or digits == 16) and first // 10 == 4:
         print("VISA")
 
     else:
         print("INVALID")
+
+
+main()
