@@ -1,31 +1,30 @@
+
 #include <cs50.h>
 #include <stdio.h>
 
-const int height = 4;
+const int HEIGHT = 10;
 
 int main(void)
 {
-    for (int row = 1; row <= height; row++)
+    for (int row = 1; row <= HEIGHT; row++)
     {
-        int space = height - row;
-        for (int s = 0; s <= space; s++)
+        for (int space = 0; space < HEIGHT - row; space++)
         {
             printf(" ");
         }
 
-
-        int hash = row;
-        for (int l = 1; l <= hash; l++)
+        for (int hash = 0; hash < row; hash++)
         {
             printf("#");
         }
 
         printf("  ");
 
-        for (int r = 1; r <= hash; r++)
+        for (int hash = 0; hash < row; hash++)
         {
             printf("#");
         }
+
         printf("\n");
     }
 }
