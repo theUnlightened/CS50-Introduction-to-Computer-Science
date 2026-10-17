@@ -1,3 +1,4 @@
-SELECT name
+SELECT AVG(energy)
 FROM songs
-WHERE name LIKE '%feat%';
+JOIN artists ON songs.artist_id = artists.id
+WHERE artist_name = 'Druke';
