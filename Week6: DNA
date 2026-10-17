@@ -28,13 +28,13 @@ def main():
     # Find longest match of each STR in DNA sequence
     count = {}
     for str_name in str_names:
-        count[str_name]=longest_match(sequence,str_name)
+        count[str_name] = longest_match(sequence, str_name)
 
     # TODO: Check database for matching profiles
     for row in rows:
         match = True
         for s in str_names:
-            if count[s] !=int(row[s]):
+            if count[s] != int(row[s]):
                 match = False
                 break
         if match:
