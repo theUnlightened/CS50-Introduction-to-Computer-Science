@@ -1,33 +1,39 @@
 from cs50 import get_string
 
+
 def sentence(tx):
     sen = 0
     LENGTH = len(tx)
     for loct in range(LENGTH):
         if tx[loct] == '!' or tx[loct] == '?' or tx[loct] == '.':
-            sen+=1
+            sen += 1
     return sen
+
 
 def letter(tx):
     let = 0
     LENGTH = len(tx)
     for loct in range(LENGTH):
         if tx[loct] <= 'Z' and tx[loct] >= 'A':
-            let+=1
+            let += 1
         elif tx[loct] >= 'a' and tx[loct] <= 'z':
-            let+=1
+            let += 1
     return let
+
 
 def word(tx):
     return len(tx.split())
+
 
 def L(tx):
     k = (float(letter(tx) / word(tx))) * 100
     return k
 
+
 def S(tx):
-    k = (float( sentence(tx) / word(tx))) * 100
+    k = (float(sentence(tx) / word(tx))) * 100
     return k
+
 
 text = get_string("Text: ")
 index = 0.0588 * L(text) - 0.296 * S(text) - 15.8
@@ -35,8 +41,8 @@ if index < 1:
     print("Before Grade 1")
 elif index >= 1 and index < 16:
     grade = 1
-    while  index >= grade + 0.5:
-        grade+=1
+    while index >= grade + 0.5:
+        grade += 1
     print("Grade", grade)
 elif index >= 16:
     print("Grade 16+")
