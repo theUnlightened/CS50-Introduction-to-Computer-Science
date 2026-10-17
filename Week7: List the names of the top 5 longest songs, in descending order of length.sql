@@ -1,3 +1,4 @@
 SELECT name
 FROM songs
-WHERE name LIKE '%feat%';
+ORDER BY duration_ms DESC
+LIMIT 5;
