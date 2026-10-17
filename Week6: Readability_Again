@@ -1,70 +1,48 @@
-import csv
-import sys
-from sys import argv
+from cs50 import get_string
 
 
-def main():
-
-    # Check for command-line usage
-    if len(argv) != 3:
-        print("Missing command-line argument")
-        sys.exit(1)
-
-    # Read database file into a variable
-    rows = []
-    with open(sys.argv[1]) as file:
-        reader = csv.DictReader(file)
-        str_names = []
-        for key in reader.fieldnames:
-            if key != "name":
-                str_names.append(key)
-        for row in reader:
-            rows.append(row)
-
-    # Read DNA sequence file into a variable
-    with open(sys.argv[2]) as file:
-        sequence = file.read().strip()
-
-    # Find longest match of each STR in DNA sequence
-    count = {}
-    for str_name in str_names:
-        count[str_name] = longest_match(sequence, str_name)
-
-    # TODO: Check database for matching profiles
-    for row in rows:
-        match = True
-        for s in str_names:
-            if count[s] != int(row[s]):
-                match = False
-                break
-        if match:
-            print(row["name"])
-            return
-
-    print("No Match")
-    return
+def sentence(tx):
+    sen = 0
+    LENGTH = len(tx)
+    for loct in range(LENGTH):
+        if tx[loct] == '!' or tx[loct] == '?' or tx[loct] == '.':
+            sen += 1
+    return sen
 
 
-def longest_match(sequence, subsequence):
-    longest_run = 0
-    subsequence_length = len(subsequence)
-    sequence_length = len(sequence)
-
-    for i in range(sequence_length):
-        count = 0
-
-        while True:
-            start = i + count * subsequence_length
-            end = start + subsequence_length
-
-            if sequence[start:end] == subsequence:
-                count += 1
-            else:
-                break
-
-        longest_run = max(longest_run, count)
-
-    return longest_run
+def letter(tx):
+    let = 0
+    LENGTH = len(tx)
+    for loct in range(LENGTH):
+        if tx[loct] <= 'Z' and tx[loct] >= 'A':
+            let += 1
+        elif tx[loct] >= 'a' and tx[loct] <= 'z':
+            let += 1
+    return let
 
 
-main()
+def word(tx):
+    return len(tx.split())
+
+
+def L(tx):
+    k = (float(letter(tx) / word(tx))) * 100
+    return k
+
+
+def S(tx):
+    k = (float(sentence(tx) / word(tx))) * 100
+    return k
+
+
+text = get_string("Text: ")
+index = 0.0588 * L(text) - 0.296 * S(text) - 15.8
+if index < 1:
+    print("Before Grade 1")
+elif index >= 1 and index < 16:
+    grade = 1
+    while index >= grade + 0.5:
+        grade += 1
+    print("Grade", grade)
+elif index >= 16:
+    print("Grade 16+")
