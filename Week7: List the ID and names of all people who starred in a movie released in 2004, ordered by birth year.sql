@@ -2,4 +2,8 @@
 SELECT id, name 
 FROM people
 WHERE id IN (
-  SELECT 
+  SELECT movie_id
+  FROM movies
+  WHERE year = '2004'
+  );
+ORDER BY year;
