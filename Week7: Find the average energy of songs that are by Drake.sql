@@ -1,4 +1,4 @@
 SELECT AVG(energy)
 FROM songs
 JOIN artists ON songs.artist_id = artists.id
-WHERE artist.name = 'Druke';
+WHERE artist.name = 'Drake';
