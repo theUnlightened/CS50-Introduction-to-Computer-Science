@@ -1,10 +1,11 @@
 -- 11. Titles of the five highest rated movies (in order) that Chadwick Boseman starred in, starting with the highest rated
 SELECT title
 FROM movies
-WHERE id IN (
+JOIN ratings ON movies.id =ratings.movie_id
+WHERE movie_id IN (
     SELECT movie_id
     FROM stars
     WHERE person_id = ( SELECT id FROM people WHERE name = 'Chadwick Boseman')
 )
-LIMIT 5
-ORDER BY DESC;
+ORDER BY rating DESC
+LIMIT 5;
