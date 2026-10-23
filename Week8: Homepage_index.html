@@ -1,49 +1,75 @@
-HTML tags:
-1. `html`
-2. `head`
-3. `body`
-4. `link`
-5. `script`
-6. `meta`
-7. `title`
-8. `nav`
-9. `div`
-10. `a`
-11. `header`
-12. `main`
-13. `h1`
-14. `p`
-15. `table`
-16. `thead`
-17. `tbody`
-18. `tr`
-19. `th`
-20. `td`
-21. `ul`
-22. `li`
-23. `button`
-24. `footer`
+<!DOCTYPE html>
 
-CSS properties:
-1. `font-family`: Sets the font used on the webpage.
-2. `text-align`: Aligns the heading text.
-3. `line-height`: Controls spacing between lines of text.
-4. `background-color`: Sets the background color.
-5. `margin`: Sets the outer spacing around an element.
-6. `font-size`: Sets the text size.
-7. `font-weight`: Controls the thickness of text.
-
-JavaScript:
-I use JavaScript on the homepage to respond to button clicks. Clicking a button changes its background color and displays a feedback message.
-
-Bootstrap:
-I use Bootstrap 5 to style the navigation bar and provide a consistent layout across the four HTML pages.
-
-Website structure:
-- `index.html`: Introduces me and includes a table, a list, and interactive buttons.
-- `hobbies.html`: Describes my hobby.
-- `study.html`: Introduces my studies.
-- `goals.html`: Describes my goals.
-
-External CSS:
-I use `styles.css` to define the font family, heading alignment, paragraph line height, navigation bar background color, introduction margins, and heading appearance.
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let buttons = document.querySelectorAll('.choice');
+                buttons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        if (button.textContent === 'CS') {
+                            button.style.backgroundColor = 'green';
+                            document.querySelector('#feedback1').textContent = 'Welcome TopCoder';
+                        } else {
+                            button.style.backgroundColor = 'blue';
+                            document.querySelector('#feedback1').textContent = 'Wow I love it';
+                        }
+                    });
+                });
+            });
+        </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My Webpage</title>
+    </head>
+    <body class="centered">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">My Homepage</a>
+            </div>
+        </nav>
+        <header class="large">
+            Zhou Hengyu
+        </header>
+        <main class="medium" id="introduction">
+            <h1>Welcome to my home page!</h1>
+            <p>I'm a student</p>
+        </main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>University</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>zhouhengyu080901@gmail.com</td>
+                    <td>Sichuan University</td>
+                </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li>Computer Science</li>
+            <li>Mathematics</li>
+        </ul>
+        <div>
+            <p>What major you like</p>
+            <button class="choice">CS</button>
+            <button class="choice">Mathematics</button>
+            <p id="feedback1"></p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="hobbies.html">Hobbies</a>
+            <a href="study.html">Study</a>
+            <a href="goals.html">Goals</a>
+        </nav>
+        <footer>
+            Copyright &#169; Zhou Hengyu
+        </footer>
+    </body>
+</html>
