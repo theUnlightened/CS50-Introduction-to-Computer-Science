@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
         printf("Usage:./recover FILE\n");
         return 1;
     }
-    FILE *card =fopen(argv[1],"rb");
+    FILE *card = fopen(argv[1],"rb");
     if (card == NULL)
     {
         printf("Could not open the file");
@@ -18,33 +18,33 @@ int main(int argc, char *argv[])
 
     uint8_t buffer[512];
 
-    int counter =0;
+    int counter = 0;
     FILE *img = NULL;
     char filename[8];
 
-    while ( fread(buffer,sizeof(uint8_t),512,card)==512 )
+    while (fread(buffer, sizeof(uint8_t), 512, card)==512 )
     {
-        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0)==0xe0)
+        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
         {
             if (img != NULL)
             {
                 fclose(img);
             }
-            sprintf(filename,"%03d.jpg",counter);
-            img = fopen(filename,"wb");
-            fwrite(buffer,sizeof(uint8_t),512,img);
+            sprintf(filename, "%03d.jpg", counter);
+            img = fopen(filename, "wb");
+            fwrite(buffer, sizeof(uint8_t), 512, img);
             counter++;
         }
         else if (img != NULL)
         {
-            fwrite(buffer,sizeof(uint8_t),512,img);
+            fwrite(buffer, sizeof(uint8_t), 512, img);
         }
-
-        if(img!= NULL)
-        {
-            fclose(img);
-        }
+    }
+    if(img != NULL)
+    {
+        fclose(img);
+    }
     fclose(card);
     return 0;
-    }
+
 }
