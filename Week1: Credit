@@ -3,7 +3,6 @@
 
 int main(void)
 {
-    // 获取用户输入的信用卡号
     long long cardnumber = get_long_long("Number: ");
 
     long long temp = cardnumber;
