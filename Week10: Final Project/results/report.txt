@@ -1,0 +1,25 @@
+Goldbach Lab - Experiment Report
+=============================================
+
+DATA SUMMARY
+---------------------------------------------
+Data points: 49999
+N range: 4 to 100000
+Mean G(N): 507.3498
+Median G(N): 456
+Minimum G(N): 1
+N with minimum G: [4, 6, 8, 12]
+Maximum G(N): 2168
+N with maximum G: [99330]
+
+DATA VALIDATION
+---------------------------------------------
+Basic consistency checks passed.
+
+INDEPENDENT VERIFICATION
+---------------------------------------------
+Matching rows: 49999/49999
+All rows matched.
+
+SCIENTIFIC LIMITATION
+This program checks a finite set of computed values. Agreement between implementations is not a proof of Goldbach's conjecture for all even integers.
