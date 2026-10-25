@@ -119,6 +119,7 @@ The initial experiment examined even integers from 4 through 100,000, inclusive,
 
 These results describe the current dataset only. They should be regenerated whenever the input range or implementation changes.
 
+
 7. Limitations
 
 - Finite computation cannot establish Goldbach's conjecture for all even integers.
@@ -139,3 +140,27 @@ Potential extensions include:
 9. Scope
 
 Goldbach Lab is an educational computational mathematics project. Its purpose is to explore numerical evidence, practice algorithm implementation, and develop reliable methods for validating computational results.
+
+
+Attachment：
+## Visualizations
+
+The following figures summarize the computational experiment over the tested range of even integers.
+
+### 1. Goldbach Partition Count
+
+This scatter plot shows the number of unordered prime-pair decompositions \(G(N)\) for each even integer \(N\).
+
+![Goldbach Partition Count](results/goldbach_scatter.png)
+
+### 2. Frequency Distribution
+
+This histogram-style bar chart shows how frequently each value of \(G(N)\) occurs in the dataset.
+
+![Frequency Distribution of G(N)](results/goldbach_frequency.png)
+
+### 3. Block Averages
+
+This plot shows the mean value of \(G(N)\) across consecutive blocks of even integers. It provides a descriptive view of local variation, not a proof of an asymptotic law.
+
+![Block Averages of G(N)](results/goldbach_block_means.png)
